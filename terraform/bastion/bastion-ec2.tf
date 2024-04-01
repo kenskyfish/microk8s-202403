@@ -7,6 +7,10 @@ resource "aws_instance" "bastion" {
   tags = {
     Name = var.ec2_name_tag
   }
+
+  metadata_options {
+    http_tokens = "required"       
+  }
 }
 
 resource "aws_eip_association" "bastion_eip_association" {

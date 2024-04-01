@@ -14,7 +14,7 @@ ec2_keypair_name  = "mainhatten-a"
 ec2_ami           = "ami-023adaba598e661ac"
 # ec2_instance_type = "t3a.medium" = 2 vcpu 4 GB RAM
 ec2_instance_type = "t3a.medium"
-ec2_name_tag = "microk8s-a"
+ec2_name_tag = "Microk8s-a"
 # vpc_subnet_id = "subnet-025627439a5dd2961" = mainhatten-b
 vpc_subnet_id = "subnet-025627439a5dd2961"
 # ec2_security_group_ids = ["sg-080467f5fd3a94f3e","sg-0d3efe32573bb075c"] = all out, local only
