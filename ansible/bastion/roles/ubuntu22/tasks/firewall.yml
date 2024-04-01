@@ -1,0 +1,23 @@
+---
+- name: Install ufw
+  apt:
+    package: ufw
+    state: present
+
+- name: Configure ufw rules
+  ufw:
+    rule: '{{ item.rule }}'
+    port: '{{ item.port }}'
+    proto: '{{ item.proto }}'
+  with_items:
+    - { rule: 'limit', port: '22', proto: 'tcp' }
+    - { rule: 'allow', port: '80', proto: 'tcp' }
+    - { rule: 'allow', port: '443', proto: 'tcp' }
+
+- name: Start and enable firewall (ufw)
+  ufw:
+    state: enabled
+
+# - name: Leave firewall disabled
+#   ufw:
+#     state: disabled

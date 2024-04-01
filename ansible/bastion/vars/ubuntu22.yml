@@ -1,0 +1,4 @@
+---
+host: bastion-a
+domain: nova-ten.com
+time_zone: Europe/Berlin

@@ -1,0 +1,16 @@
+---
+- name: Set hostname to {{ host }}.{{ domain }}
+  command: "hostnamectl --static set-hostname {{ host }}.{{ domain }}"
+
+- name: Set timezone to {{ time_zone }}
+  command: "timedatectl set-timezone {{ time_zone }}"
+
+- name: Install assorted utilities
+  apt:
+    name:
+    - net-tools
+    - sysstat
+    - zip
+    - secure-delete
+    - tree
+    update_cache: yes

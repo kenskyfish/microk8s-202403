@@ -1,0 +1,10 @@
+# ansible_connection and ansible_user must not be changed
+# change ansible_ssh_private_key_file to point to the private ssh key that can access the server
+
+[all:vars]
+ansible_connection=ssh
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/crypt/keys/aws/mainhatten-a.pem
+
+[bastion]
+bastion-a
