@@ -1,0 +1,40 @@
+---
+- name: make path for private key
+  file:
+    path: "/etc/ssl/private"
+    state: directory
+    mode: '0700'
+
+- name: place private key
+  copy:
+    src: ./files/private.key
+    dest: "/etc/ssl/private/private.key"
+
+- name: place cert
+  copy:
+    src: ./files/public.crt
+    dest: "/etc/ssl/certs/public.crt"
+
+- name: place nginx main config file
+  copy:
+    src: ./templates/nginx.conf
+    dest: "/etc/nginx/nginx.conf"
+
+- name: place nginx nexus config file
+  template:
+    src: ./templates/nexus.conf
+    dest: "/etc/nginx/conf.d/nexus.conf"
+
+- name: permit nginx to connect
+  seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes
+  when: ansible_selinux.status == "enabled"
+
+- name: Restart Nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
+    

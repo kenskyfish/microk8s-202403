@@ -1,0 +1,13 @@
+# trivial proxy of host to server running default nginx web server
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name {{ host }}.{{ domain }};
+        
+    location / {
+        proxy_pass http://10.69.7.145;
+        include proxy_params;
+    }
+}

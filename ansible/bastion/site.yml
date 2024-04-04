@@ -1,6 +1,7 @@
 ---
 - hosts: bastion
   roles:
-  - { role: ubuntu22, become: true }
+  # - { role: ubuntu22, become: true }
+  - { role: nginx, become: true }
   vars_files:
   - vars/ubuntu22.yml

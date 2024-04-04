@@ -1,0 +1,37 @@
+---
+- name: Create simple bogus private key (RSA, 4096 bits)
+  community.crypto.openssl_privatekey:
+    path: /etc/ssl/private/bogus-selfsigned.key
+
+- name: Create simple bogus self-signed certificate
+  community.crypto.x509_certificate:
+    path: /etc/ssl/certs/bogus-selfsigned.crt
+    privatekey_path: /etc/ssl/private/bogus-selfsigned.key
+    provider: selfsigned
+
+- name: Place blockip config in sites-available
+  copy:
+    src: files/sites-available/blockip
+    dest: /etc/nginx/sites-available/blockip
+
+- name: Place proxy_example config in sites-available
+  template:
+    src: templates/sites-available/proxy_example
+    dest: /etc/nginx/sites-available/proxy_example
+
+- name: Link blockip config in sites-enabled
+  file:
+    src: /etc/nginx/sites-available/blockip
+    dest: /etc/nginx/sites-enabled/blockip
+    state: link
+
+- name: Remove default link from sites-enabled
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Restart Nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes

@@ -1,0 +1,11 @@
+# default proxy to catch IP address URL and reject
+
+server {
+    listen 80 default_server;
+    listen 443 ssl default_server;
+
+    ssl_certificate /etc/ssl/certs/bogus-selfsigned.crt;
+    ssl_certificate_key /etc/ssl/private/bogus-selfsigned.key;
+
+    return 444;
+}
