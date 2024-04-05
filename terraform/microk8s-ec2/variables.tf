@@ -45,3 +45,9 @@ variable "ec2_security_group_ids" {
   type        = list(string)
   default     = ["sg-123412341234"]
 }
+
+variable "root_block_device_gb" {
+  description = "AWS EC2 Security Group Id(s)"
+  type        = number
+  default     = 8
+}

@@ -7,4 +7,10 @@ resource "aws_instance" "microk8s-ec2" {
   tags = {
     Name = var.ec2_name_tag
   }
+
+  root_block_device {
+    volume_size = var.root_block_device_gb # in GB
+    volume_type = "gp3"
+  }
+
 }
