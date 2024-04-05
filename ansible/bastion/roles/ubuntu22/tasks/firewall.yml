@@ -17,7 +17,3 @@
 - name: Start and enable firewall (ufw)
   ufw:
     state: enabled
-
-# - name: Leave firewall disabled
-#   ufw:
-#     state: disabled

@@ -14,7 +14,7 @@ ec2_keypair_name  = "mainhatten-a"
 ec2_ami           = "ami-023adaba598e661ac"
 # ec2_instance_type = "t3a.medium" = 2 vcpu 4 GB RAM
 ec2_instance_type = "t3a.micro"
-ec2_name_tag = "Bastion"
+ec2_name_tag = "Bastion-a"
 # vpc_subnet_id = "subnet-09a2f4e9dd79c93bf" = mainhatten-dmz
 vpc_subnet_id = "subnet-09a2f4e9dd79c93bf"
 ec2_elastic_ip = "eipalloc-062144093e8c8f36d"
